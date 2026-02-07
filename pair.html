@@ -191,14 +191,19 @@ footer{
 </div>
 
 <script>
-    // show server name from URL
-const params = new URLSearchParams(window.location.search);
-const server = params.get("server");
+   const params = new URLSearchParams(window.location.search);
+const id = params.get("server") || "1";
 
-if(server){
-    document.getElementById("serverName").innerText =
-        "Connected to Server " + server;
-    }
+fetch("https://raw.githubusercontent.com/1122bot/BILAL-INFO/main/servers.json")
+.then(r => r.json())
+.then(data => {
+
+  const name = data[id] || "Unknown Server";
+
+  document.getElementById("serverName").innerText =
+    "Connected to " + name;
+
+});
 async function getCode() {
     const numberInput = document.getElementById("number");
     const resDiv = document.getElementById("result");
