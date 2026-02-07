@@ -176,6 +176,7 @@ footer{
 
 <div class="card">
     <h1>POPKID MD</h1>
+    <h2 id="serverName">Loading...</h2>
     <div class="status">👑 SYSTEM IS ACTIVE 👑</div>
 
     <div class="input-wrap">
@@ -190,6 +191,14 @@ footer{
 </div>
 
 <script>
+    // show server name from URL
+const params = new URLSearchParams(window.location.search);
+const server = params.get("server");
+
+if(server){
+    document.getElementById("serverName").innerText =
+        "Connected to Server " + server;
+    }
 async function getCode() {
     const numberInput = document.getElementById("number");
     const resDiv = document.getElementById("result");
