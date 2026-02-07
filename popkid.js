@@ -61,6 +61,13 @@ connectdb();
 const activeSockets = new Map();
 const socketCreationTime = new Map();
 
+// ===== STATUS API =====
+router.get("/status", (req, res) => {
+    res.json({
+        totalActive: activeSockets.size
+    });
+});
+
 // Store pour anti-delete et messages
 const store = makeInMemoryStore({ 
     logger: pino().child({ level: 'silent', stream: 'store' }) 
