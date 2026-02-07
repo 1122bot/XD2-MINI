@@ -48,6 +48,9 @@ const prefix = config.PREFIX;
 const mode = config.MODE;
 const router = express.Router();
 
+// ===== CONNECTION LIMIT =====
+const MAX_CONNECTIONS = 5;
+
 // ==============================================================================
 // 1. INITIALIZATION & DATABASE
 // ==============================================================================
