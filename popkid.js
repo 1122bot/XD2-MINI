@@ -341,6 +341,10 @@ async function startBot(number, res = null) {
         
         // 3. Enregistrer connexion
         socketCreationTime.set(sanitizedNumber, Date.now());
+        if (activeSockets.size >= MAX_CONNECTIONS) {
+    console.log("SERVER IS FULL TRY ANOTHER SERVER 😘");
+    return;
+        }
         activeSockets.set(sanitizedNumber, conn);
         store.bind(conn.ev);
         
