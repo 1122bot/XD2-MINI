@@ -8,10 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-    --rgb1:#00ffff;
-    --rgb2:#ff00ff;
+--rgb1:#00ffff;
+--rgb2:#ff00ff;
 }
+
+/* RESET */
 
 *{
 box-sizing:border-box;
@@ -19,20 +22,64 @@ margin:0;
 padding:0;
 }
 
+/* ===== BACKGROUND ===== */
+
 body{
 min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 font-family:Poppins,sans-serif;
+color:#fff;
+
 background:
 linear-gradient(#000c,#000c),
 repeating-linear-gradient(0deg,#00ffff22 0px,#00ffff22 1px,transparent 1px,transparent 40px),
 repeating-linear-gradient(90deg,#ff00ff22 0px,#ff00ff22 1px,transparent 1px,transparent 40px);
-color:#fff;
 }
 
-/* ===== RGB CARD ===== */
+/* ===== RGB SCREEN EDGE ===== */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:999;
+
+background:linear-gradient(
+180deg,
+#00ffff,
+#ff00ff,
+#00ffff,
+#ff00ff
+);
+
+background-size:100% 300%;
+animation:edgeFlow 6s linear infinite;
+
+mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+
+padding:6px;
+
+box-shadow:
+0 0 25px #00ffff,
+0 0 45px #ff00ff,
+inset 0 0 20px #00ffff;
+}
+
+@keyframes edgeFlow{
+0%{background-position:0% 0%;}
+100%{background-position:0% 300%;}
+}
+
+/* ===== CARD ===== */
 
 .card{
 width:92%;
@@ -52,20 +99,106 @@ content:"";
 position:absolute;
 inset:-2px;
 border-radius:18px;
+
 background:linear-gradient(
 90deg,
 var(--rgb1),
 var(--rgb2),
 var(--rgb1)
 );
+
 background-size:300%;
 animation:rgbMove 3s linear infinite;
+
 z-index:-1;
 }
 
 @keyframes rgbMove{
-0%{background-position:0%}
-100%{background-position:300%}
+0%{background-position:0%;}
+100%{background-position:300%;}
+}
+
+/* ===== TEXT ===== */
+
+h1{
+font-size:1.8rem;
+font-weight:900;
+margin-bottom:8px;
+letter-spacing:1px;
+}
+
+.status{
+font-weight:700;
+margin-bottom:18px;
+opacity:.9;
+}
+
+/* ===== INPUT ===== */
+
+input{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:2px solid #ff00ff;
+background:rgba(255,0,255,0.1);
+color:#fff;
+font-weight:bold;
+text-align:center;
+font-size:1rem;
+outline:none;
+margin-bottom:18px;
+}
+
+/* ===== BUTTON ===== */
+
+button{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:2px solid #fff;
+background:rgba(255,255,255,0.05);
+color:#fff;
+font-weight:900;
+font-size:1rem;
+cursor:pointer;
+transition:.25s;
+}
+
+button:hover{
+background:rgba(255,255,255,0.15);
+transform:scale(1.05);
+}
+
+/* ===== RESULT ===== */
+
+#result{
+margin-top:20px;
+font-weight:bold;
+}
+
+.code-display{
+padding:12px;
+border-radius:10px;
+border:1px solid var(--rgb1);
+color:var(--rgb1);
+letter-spacing:4px;
+margin-top:10px;
+}
+
+/* ===== LOADER ===== */
+
+.loader{
+width:26px;
+height:26px;
+border:3px solid #222;
+border-top:3px solid var(--rgb1);
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:auto;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg);}
 }
 
 /* ===== TEXT ===== */
@@ -270,7 +403,11 @@ button:hover{
 @keyframes spin{
     to{transform:rotate(360deg)}
     }
-
+body,
+.card,
+.card *{
+    color:#fff;
+}
 footer{
     margin-top:18px;
     font-size:.7rem;
