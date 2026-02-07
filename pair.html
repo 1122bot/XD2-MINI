@@ -76,44 +76,45 @@ background:linear-gradient(90deg,var(--rgb1),var(--rgb2));
 margin-bottom:16px;
 }
 
-/* NUMBER BOX — PINK + BLUE TEXT */
+/* ===== NUMBER BOX FIX ===== */
 
 input{
 width:100%;
 padding:14px;
-border:none;
-border-radius:12px;
+border-radius:14px;
+border:3px solid #fff;
 background:#ff4fd8;
-color:#0094ff;
+color:#0066ff;
 font-weight:900;
-font-size:16px;
+font-size:18px;
 text-align:center;
-margin-bottom:16px;
+margin-bottom:18px;
+outline:none;
 }
 
-/* DONE BUTTON */
+/* ===== BUTTON RGB BORDER FIX ===== */
 
 button{
 width:100%;
 padding:14px;
-border-radius:12px;
+border-radius:14px;
 background:#fff;
 color:#000;
 font-weight:900;
 font-size:16px;
 cursor:pointer;
 position:relative;
+z-index:1;
 overflow:hidden;
-margin-bottom:18px;
 }
 
-/* RGB BORDER FOR BUTTON */
+/* RGB animated border */
 
 button::before{
 content:"";
 position:absolute;
-inset:-3px;
-border-radius:14px;
+inset:-4px;
+border-radius:16px;
 background:linear-gradient(
 90deg,
 #00ffff,
@@ -126,6 +127,11 @@ animation:rgbMove 3s linear infinite;
 z-index:-1;
 }
 
+/* button hover glow */
+
+button:hover{
+transform:scale(1.05);
+}
 /* PAIR CODE TEXT */
 
 #result{
