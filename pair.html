@@ -10,116 +10,92 @@
 <style>
 
 :root{
-
 --rgb1:#00ffff;
 --rgb2:#ff00ff;
---rgb3:#ff0033;
-
---black:#000;
---white:#fff;
---pink:#ff4fd8;
---red:#ff3030;
-
 }
 
-/* ===== RESET ===== */
+/* RESET */
 
 *{
-box-sizing:border-box;
 margin:0;
 padding:0;
+box-sizing:border-box;
 font-family:Poppins,sans-serif;
 }
 
-/* ===== BODY ===== */
+/* BACKGROUND */
 
 body{
 min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#050505;
+background:#000;
 color:#fff;
 }
 
-/* ===== CARD ===== */
+/* CARD */
 
 .card{
 width:92%;
 max-width:420px;
+background:#000;
 padding:26px;
 border-radius:18px;
-background:#000;
 text-align:center;
 position:relative;
+color:#fff;
+font-weight:700;
 overflow:hidden;
 }
 
-/* RGB border animation */
+/* RGB CARD BORDER */
 
 .card::before{
 content:"";
 position:absolute;
 inset:-2px;
 border-radius:18px;
-background:linear-gradient(
-90deg,
-var(--rgb1),
-var(--rgb2),
-var(--rgb3),
-var(--rgb1)
-);
+background:linear-gradient(90deg,var(--rgb1),var(--rgb2),var(--rgb1));
 background-size:300%;
 animation:rgbMove 4s linear infinite;
 z-index:-1;
 }
 
-@keyframes rgbMove{
-to{background-position:300%}
-}
-
-/* ===== TITLE ===== */
+/* TITLES */
 
 h1{
 font-size:28px;
-font-weight:900;
 margin-bottom:8px;
 background:linear-gradient(90deg,var(--rgb1),var(--rgb2));
-background-size:200%;
-animation:rgbMove 3s linear infinite;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-/* ===== SERVER TEXT ===== */
-
-.server{
-margin:10px 0 18px;
-font-weight:900;
-color:var(--red);
+.status{
+margin-bottom:16px;
 }
 
-/* ===== INPUT ===== */
+/* NUMBER BOX — PINK + BLUE TEXT */
 
 input{
 width:100%;
 padding:14px;
 border:none;
 border-radius:12px;
-background:var(--pink);
-color:#000;
+background:#ff4fd8;
+color:#0094ff;
 font-weight:900;
 font-size:16px;
 text-align:center;
 margin-bottom:16px;
 }
 
-/* ===== BUTTON ===== */
+/* DONE BUTTON */
 
 button{
 width:100%;
 padding:14px;
-border:none;
 border-radius:12px;
 background:#fff;
 color:#000;
@@ -128,48 +104,40 @@ font-size:16px;
 cursor:pointer;
 position:relative;
 overflow:hidden;
+margin-bottom:18px;
 }
 
-/* RGB border around button */
+/* RGB BORDER FOR BUTTON */
 
 button::before{
 content:"";
 position:absolute;
-inset:-2px;
-border-radius:12px;
+inset:-3px;
+border-radius:14px;
 background:linear-gradient(
 90deg,
-var(--rgb1),
-var(--rgb2),
-var(--rgb3),
-var(--rgb1)
+#00ffff,
+#ff00ff,
+#ff0033,
+#00ffff
 );
 background-size:300%;
 animation:rgbMove 3s linear infinite;
 z-index:-1;
 }
 
-/* ===== RESULT ===== */
+/* PAIR CODE TEXT */
 
 #result{
-margin-top:18px;
 font-weight:900;
+margin-top:10px;
 }
 
-/* loader */
+/* ANIMATION */
 
-.loader{
-width:26px;
-height:26px;
-border:3px solid #222;
-border-top:3px solid var(--rgb1);
-border-radius:50%;
-animation:spin 1s linear infinite;
-margin:auto;
-}
-
-@keyframes spin{
-to{transform:rotate(360deg)}
+@keyframes rgbMove{
+0%{background-position:0%}
+100%{background-position:300%}
 }
 
 /* ===== PAIR CODE DISPLAY ===== */
