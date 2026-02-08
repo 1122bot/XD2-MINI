@@ -6,7 +6,7 @@ const moment = require('moment-timezone');
 const { cmd, commands } = require('../command');
 
 // --- PRE-LOAD IMAGE TO STOP LAG ---
-const menuImagePath = path.resolve('./popkid/menu.jpg');
+const menuImagePath = path.resolve('./bilal/menu.jpg');
 let menuImageBuffer = null;
 try {
     menuImageBuffer = fs.readFileSync(menuImagePath);
