@@ -16,9 +16,9 @@ module.exports = {
     // 2. INFORMATIONS DU BOT
     // ===========================================================
     PREFIX: process.env.PREFIX || '.',
-    OWNER_NUMBER: process.env.OWNER_NUMBER || '+254111385747', // Mettez votre numéro ici
-    BOT_NAME: "popkid",
-    BOT_FOOTER: '© ᴘᴏᴡᴇʀᴇᴅ ʙʏ popkid',
+    OWNER_NUMBER: process.env.OWNER_NUMBER || '+923078071982', // Mettez votre numéro ici
+    BOT_NAME: "BILAL",
+    BOT_FOOTER: '👑 BY :❯ BILAL-MD 👑',
     
     // Mode de travail : public, private, group, inbox
     WORK_TYPE: process.env.WORK_TYPE || "public", 
@@ -61,8 +61,8 @@ module.exports = {
     // ===========================================================
     // 7. IMAGES & LIENS
     // ===========================================================
-    IMAGE_PATH: 'https://files.catbox.moe/d1stg5.jpg',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VacgxK96hENmSRMRxx1r',
+    IMAGE_PATH: 'https://files.catbox.moe/kunzpz.png',
+    CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vaj3Xnu17EmtDxTNnQ0G',
     
     // ===========================================================
     // 8. EXTERNAL API (Optionnel)
