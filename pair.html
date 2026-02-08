@@ -182,7 +182,6 @@ footer{
 
 <div class="card">
     <h1>👑 BILAL-MD 👑</h1>
-    <h2 id="serverName">TESTING...😊</h2>
     <div class="status">👑 SYSTEM IS ACTIVE 👑</div>
 
     <div class="input-wrap">
@@ -197,19 +196,7 @@ footer{
 </div>
 
 <script>
-   const params = new URLSearchParams(window.location.search);
-const id = params.get("server") || "1";
-
-fetch("https://raw.githubusercontent.com/1122bot/BILAL-INFO/main/servers.json")
-.then(r => r.json())
-.then(data => {
-
-  const name = data[id] || "Unknown Server";
-
-  document.getElementById("serverName").innerText =
-    "" + name;
-
-});
+  
 async function getCode() {
     const numberInput = document.getElementById("number");
     const resDiv = document.getElementById("result");
