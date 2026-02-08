@@ -9,32 +9,78 @@
 
 <style>
 
+/* ===== ROOT + BILAL RGB TITLE ===== */
+
 :root{
---rgb1:#00ffff;
---rgb2:#ff00ff;
+--bilal-rgb: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff8800,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #ff00ff,
+    #ff0000
+);
 }
 
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
+/* RGB animation */
+@keyframes bilalRGB{
+0%{ background-position:0% }
+100%{ background-position:300% }
 }
 
-/* BACKGROUND */
+/* BILAL title RGB */
+.bilal-title{
+font-weight:900;
+font-size:28px;
+text-align:center;
+letter-spacing:2px;
 
-body{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#000;
-color:#fff;
+background:var(--bilal-rgb);
+background-size:300%;
+
+-webkit-background-clip:text;
+color:transparent;
+
+animation:bilalRGB 4s linear infinite;
 }
 
-/* CARD */
+/* RGB brackets */
+.bilal-title::before,
+.bilal-title::after{
+
+background:var(--bilal-rgb);
+background-size:300%;
+
+-webkit-background-clip:text;
+color:transparent;
+
+animation:bilalRGB 4s linear infinite;
+font-weight:900;
+}
+
+.bilal-title::before{ content:"[ "; }
+.bilal-title::after{ content:" ]"; }
+  
+  /* ===== CARD BLACK BACKGROUND STYLE ===== */
+
+.card-black-bg{
+
+background:#000;          /* pure black */
+color:#fff;               /* white text */
+
+border-radius:18px;
+padding:26px;
+
+box-shadow:
+0 0 10px rgba(0,0,0,0.8),
+inset 0 0 20px rgba(0,0,0,0.9);
+
+}
+    
+    /* ===== BILAL CARD RGB STYLE ===== */
 
 .card{
 width:92%;
@@ -47,116 +93,121 @@ position:relative;
 color:#fff;
 font-weight:700;
 overflow:hidden;
-}
-
-/* RGB CARD BORDER */
-
-.card::before{
-content:"";
-position:absolute;
-inset:-2px;
-border-radius:18px;
-background:linear-gradient(90deg,var(--rgb1),var(--rgb2),var(--rgb1));
-background-size:300%;
-animation:rgbMove 4s linear infinite;
-z-index:-1;
-}
-
-/* TITLES */
-
-h1{
-font-size:28px;
-margin-bottom:8px;
-background:linear-gradient(90deg,var(--rgb1),var(--rgb2));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.status{
-margin-bottom:16px;
-}
-
-/* ===== NUMBER BOX FIX ===== */
-
-input{
-width:100%;
-padding:14px;
-border-radius:14px;
-border:3px solid #fff;
-background:#ff4fd8;
-color:#0066ff;
-font-weight:900;
-font-size:18px;
-text-align:center;
-margin-bottom:18px;
-outline:none;
-}
-
-/* ===== BUTTON RGB BORDER FIX ===== */
-
-button{
-width:100%;
-padding:14px;
-border-radius:14px;
-background:#fff;
-color:#000;
-font-weight:900;
-font-size:16px;
-cursor:pointer;
-position:relative;
-z-index:1;
-overflow:hidden;
+margin:auto;
 }
 
 /* RGB animated border */
 
-button::before{
+.card::before{
 content:"";
 position:absolute;
-inset:-4px;
-border-radius:16px;
+inset:-3px;
+border-radius:20px;
+
 background:linear-gradient(
 90deg,
+#ff0000,
+#ff9900,
+#ffff00,
+#00ff00,
 #00ffff,
+#0000ff,
 #ff00ff,
-#ff0033,
-#00ffff
+#ff0000
 );
-background-size:300%;
-animation:rgbMove 3s linear infinite;
+
+background-size:400%;
+animation:cardRGB 4s linear infinite;
+
 z-index:-1;
 }
 
-/* button hover glow */
+/* glow effect */
 
-button:hover{
-transform:scale(1.05);
+.card::after{
+content:"";
+position:absolute;
+inset:-6px;
+border-radius:24px;
+background:inherit;
+filter:blur(12px);
+opacity:.5;
+z-index:-2;
 }
-/* PAIR CODE TEXT */
 
-#result{
-font-weight:900;
-margin-top:10px;
-}
+/* animation */
 
-/* ANIMATION */
-
-@keyframes rgbMove{
+@keyframes cardRGB{
 0%{background-position:0%}
-100%{background-position:300%}
+100%{background-position:400%}
+    }
+
+/* ===== NUMBER INPUT — RGB FULL COVER FIX ===== */
+
+.input-wrap{
+position:relative;
+border-radius:22px;
+padding:4px; /* ⭐ border thickness control */
+background:#000;
+overflow:hidden;
 }
 
-/* ===== PAIR CODE DISPLAY ===== */
+/* RGB border layer */
+.input-wrap::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:inherit;
 
-.code{
-margin-top:10px;
-font-size:20px;
-letter-spacing:3px;
-background:linear-gradient(90deg,var(--rgb1),var(--rgb2));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+background:linear-gradient(
+90deg,
+#ff0000,
+#ff9900,
+#ffff00,
+#00ff00,
+#00ffff,
+#0000ff,
+#ff00ff,
+#ff0000
+);
+
+background-size:600%;
+animation:rgbBorderFlow 12s linear infinite;
+
+z-index:0;
 }
 
+/* input box */
+.input-wrap input{
+position:relative;
+width:100%;
+padding:14px;
+
+border:none;
+border-radius:18px; /* slightly smaller than wrap */
+
+background:#000;
+color:#fff;
+
+font-weight:900;
+font-size:18px;
+text-align:center;
+
+outline:none;
+z-index:1;
+}
+
+/* placeholder */
+.input-wrap input::placeholder{
+color:#aaa;
+}
+
+/* animation */
+@keyframes rgbBorderFlow{
+0%{background-position:0%}
+100%{background-position:600%}
+}
+    
 /* ===== RESPONSIVE ===== */
 
 @media(max-width:400px){
@@ -176,6 +227,135 @@ footer{
     color:rgba(255,255,255,0.5);
     letter-spacing:1px;
 }
+    
+  /* ===== BILAL RGB TITLE ===== */
+
+.card h1{
+font-weight:900;
+
+background:linear-gradient(
+90deg,
+#ff0000,
+#ff9900,
+#ffff00,
+#00ff00,
+#00ffff,
+#0000ff,
+#ff00ff,
+#ff0000
+);
+
+background-size:400%;
+
+-webkit-background-clip:text;
+background-clip:text;
+
+color:transparent;
+
+animation:bilalRGB 4s linear infinite;
+}
+
+@keyframes bilalRGB{
+0%{background-position:0%}
+100%{background-position:400%}
+}  
+    
+ /* ===== SYSTEM STATUS — SLOW RGB TEXT ===== */
+
+.status{
+font-weight:900;
+letter-spacing:1px;
+
+background:linear-gradient(
+90deg,
+#ff0000,
+#ff9900,
+#ffff00,
+#00ff00,
+#00ffff,
+#0000ff,
+#ff00ff,
+#ff0000
+);
+
+background-size:600%;
+
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+
+animation:statusRGB 50s linear infinite;
+}
+
+@keyframes statusRGB{
+0%{background-position:0%}
+100%{background-position:600%}
+} 
+    
+  /* ===== GET CODE GREEN BOX — FIXED RGB TEXT ===== */
+
+.get-code-box{
+display:inline-block;
+margin:12px auto;
+
+padding:10px 18px;
+
+background:#00cc33; /* pure green box */
+border-radius:14px;
+
+font-weight:900;
+font-size:16px;
+text-align:center;
+}
+
+/* ===== GET CODE — DARK BOX RGB BORDER ===== */
+
+.get-code-box{
+    position: relative;
+    display: inline-block;
+    padding: 12px 18px;
+
+    background: #050505;   /* dark black box */
+    color: #ffffff;        /* visible text */
+
+    font-weight: 900;
+    font-size: 18px;
+
+    border-radius: 14px;
+    z-index: 1;
+}
+
+/* RGB border layer */
+.get-code-box::before{
+    content: "";
+    position: absolute;
+    inset: -3px;   /* border thickness — change kar sakte ho */
+    border-radius: 16px;
+
+    background: linear-gradient(
+        90deg,
+        #ff0000,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0000ff,
+        #ff00ff,
+        #ff0000
+    );
+
+    background-size: 400%;
+    animation: rgbBorderFlow 6s linear infinite;
+
+    z-index: -1;
+}
+
+/* animation */
+@keyframes rgbBorderFlow{
+    0%{ background-position:0% }
+    100%{ background-position:400% }
+} 
+    
+    
 </style>
 </head>
 <body>
@@ -192,7 +372,7 @@ footer{
 
     <div id="result"></div>
 
-    <footer>⚠️ POPKID MD WHATSAPP BOT ⚠️</footer>
+    <footer>✨ POPKID MD WHATSAPP BOT ✨</footer>
 </div>
 
 <script>
